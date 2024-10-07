@@ -1,5 +1,32 @@
 <?php
 
+function getRandomPassword($length)
+{
+    //tutti i caratteri che possono formare una password
+    $characters = [
+        'abcdefghijklmnopqrstuvwxyz',
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        '123456789',
+        '%&@?!'
+    ];
+
+    //Creo una stringa vuota che comporrà la password 
+    $password = '';
+
+    //Ciclo for che itera su tutti i $characters per il numero di volte inserito nell'input
+    for ($i = 0; $i < $_GET['password']; $i++) {
+
+        //Itero randomicamente su uno dei 4 elementi presenti sull'array $characters
+        $randomElement = rand(0, 3);
+
+        //Calcolo la lunghezza di ognuno dei 4 elementi
+        $elementLength = strlen($characters[$randomElement]) - 1;
+
+        //Per creare la password selezione l'array characters[elemento[numero random tra 0 e l'index dell'ultimo carattere]]
+        $password = $characters[$randomElement[rand(0, $elementLength)]];
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -12,8 +39,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/style.css">
-</head>
+</head>/
 
 <body>
     <!-- Descrizione
@@ -36,10 +62,17 @@ Verificato il corretto funzionamento del nostro codice, spostiamo la logica in u
         <form action="index.php" method="GET">
             <div class="my-3">
                 <label for="password" class="form-label fw-bold">Lunghezza password</label>
-                <input type="password" class="form-control w-25" id="password"
+                <input type="number" class="form-control w-50" id="password" name="password"
                     placeholder="Inserire la lunghezza della password">
             </div>
+            <button class="btn btn-primary">Genera</button>
         </form>
+
+
+        <div class="result my-4">
+            <h3> <?= getRandomPassword($_GET['password']) ?> </h3>
+        </div>
+
     </main>
 
 
