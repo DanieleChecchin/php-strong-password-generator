@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+}
+
+main {
+    background-color: #001731;
+    height: 100vh;
+}
+
+h1 {
+    color: #7E8C9C;
+}
+
+.result {
+    background-color: #CFF4FC;
+    padding: 20px;
+}
+
+form {
+    height: 250px;
+}
+
+.insert {
+    padding: 20px;
+}
+
+form,
+.result {
+    margin: 0 30px;
+}
