@@ -19,12 +19,17 @@ function getRandomPassword($length)
         //Itero randomicamente su uno dei 4 elementi presenti sull'array $characters
         $randomElement = rand(0, 3);
 
+        //Creo una variabile d'appoggio
+        $dizionario = $characters[$randomElement];
+
         //Calcolo la lunghezza di ognuno dei 4 elementi
-        $elementLength = strlen($characters[$randomElement]) - 1;
+        $randomIndex = rand(0, strlen($dizionario) - 1);
 
         //Per creare la password selezione l'array characters[elemento[numero random tra 0 e l'index dell'ultimo carattere]]
-        $password = $characters[$randomElement[rand(0, $elementLength)]];
+        $password .= $dizionario[$randomIndex];
     }
+
+    return $password;
 }
 
 ?>
@@ -39,7 +44,7 @@ function getRandomPassword($length)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-</head>/
+</head>
 
 <body>
     <!-- Descrizione
